@@ -1,0 +1,31 @@
+<% if flash.now[:notice] %>
+    <p class="notice"><%= flash.now[:notice] %></p>
+<% end %>
+
+<p>
+  <strong>Room name:</strong>
+  <%= @register.room_name %>
+</p>
+
+<p>
+  <strong>Introduction:</strong>
+  <%= @register.introduction %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @register.price %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @register.address %>
+</p>
+
+<p>
+  <strong>Room_image:</strong>
+  <%= image_tag @register.room_image_url(:thumb ) if @register.room_image.present? %>
+</p>
+
+<%= link_to 'Edit', edit_register_path(@register) %> |
+<%= link_to 'Back', registers_path %>
