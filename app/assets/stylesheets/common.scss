@@ -20,6 +20,44 @@ header{
     justify-content: space-between;
 }
 
+.drop2{
+    display: none;
+}
+
+.share{
+    display: flex;
+    align-items: center;
+}
+
+.header_left{
+    display: inline-block;
+}
+
+.header_search{
+    display: inline-block;
+    position: relative;
+}
+
+.search_area{
+    padding: 5px 2px 5px 30px;
+    width: 180px;
+    height: 38px;
+}
+
+.icon{
+    color: black;
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    font-size: 18px;
+}
+
+.search_keyword{
+    padding: 5px 2px 5px 30px;
+    width: 180px;
+    height: 38px;
+}
+
 .btn{
     padding: 10px 15px;
     border-radius: 5px;
@@ -71,6 +109,18 @@ h1{
     border-radius: 5px;
     border-color: #0000AA;
     width: 80%;
+}
+
+.popular_area{
+    display: flex;
+}
+
+.Tokyo{
+    background-image: url(https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg);
+    background-size: contain;
+    border-radius: 5px;
+    width: 186px;
+    height: 300px;
 }
 
 table{

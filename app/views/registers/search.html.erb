@@ -1,4 +1,4 @@
-<h1>検索結果：件</h1>
+<h1>検索結果：<%= @results.count %>件</h1>
 
 <table>
     <thead>
@@ -13,16 +13,16 @@
     </thead>
 
     <tbody>
-        <% @registers.each do |register| %>
+        <% @results.each do |results| %>
             <tr>
                 <td>
-                <%= image_tag register.room_image_url(:thumb ) if register.room_image.present? %>
+                <%= image_tag results.room_image_url(:thumb ) if results.room_image.present? %>
                 </td>
-                <td><%= link_to register.room_name, register %></td>
-                <td><%= register.address %></td>
-                <td><%= register.introduction %></td>
-                <td><%= register.price %></td>
-                <td><%= register.created_at.to_s(:datetime_jp) %></td>
+                <td><%= link_to results.room_name, results %></td>
+                <td><%= results.address %></td>
+                <td><%= results.introduction %></td>
+                <td><%= results.price %></td>
+                <td><%= results.created_at.to_s(:datetime_jp) %></td>
             </tr>
         <% end %>
     </tbody>

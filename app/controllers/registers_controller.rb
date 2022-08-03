@@ -59,8 +59,6 @@ class RegistersController < ApplicationController
   end
 
   def search
-    @registers = Register.all
-
     @results = @q.result(distinct: true)
     if @q_header
       @results = @q_header.result(distinct: true)

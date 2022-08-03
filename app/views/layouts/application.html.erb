@@ -8,29 +8,66 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="jquery-3.3.1.min.js"></script>
   </head>
 
   <body>
     <header>
-      <%= link_to (image_tag ("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png")), users_path %>
+      <!-- 共通部分 -->
+      <div class = "share">
+        <%= link_to (image_tag ("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png")), users_path %>
 
-      <%= search_form_for @q_header, url: search_registers_path do |f| %>
-        <%= f.search_field :address_cont, placeholder: "エリア" %>
-      <% end %>
+        <div class = "header_left">
+          <div class = "header_search">
+            <%= search_form_for @q_header, url: search_registers_path do |f| %>
+              <%= f.search_field :address_cont, class: 'search_area', placeholder: "エリア" %>
+              <i class = "fa-solid fa-location-dot icon"></i>
+            <% end %>
+          </div>
 
-      <% if user_signed_in? %>  <!-- ユーザーがログインしている場合 -->
-        <p><%= current_user.name %></p>
-        <nav>
-          <%= current_user.name %>
-          <ul>
-            <li><%= link_to "ルーム登録", new_register_path %></li>
-            <li><%= link_to "予約済みルーム一覧", users_path %></li>
-            <li><%= link_to "登録済みルーム一覧", users_path %></li>
-            <li><%= link_to "設定", users_path %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </nav>
+          <div class = "header_search">
+            <%= search_form_for @q_header, url: search_registers_path do |f| %>
+              <%= f.search_field :room_name_or_introduction_or_price_or_address_cont, class: 'search_keyword', placeholder: "キーワード" %>
+              <i class = "fa-solid fa-magnifying-glass icon"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if user_signed_in? %>
+      <!-- ユーザーがログインしている場合 -->
+        <div class = "header_right" >
+          <p><%= current_user.name %></p>
+
+          <div>
+            <%= form_for(@user) do |f| %>
+              <% if @user.icon? %>
+              <!-- アイコン画像を登録している場合(アップローダーファイルで指定したサイズを表示) -->
+                  <%= image_tag @user.icon.thumb.url %>
+              <% else %>
+              <!-- アイコン画像がデフォルト設定の場合 -->
+                  <%= image_tag "/assets/default.png", :size => '65x65' %>
+              <% end %>
+            <% end %>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              Dropdown button
+            </button>
+          </div>
+            <nav>
+              <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
+                <li><%= link_to "ルーム登録", new_register_path %></li>
+                <li><%= link_to "予約済みルーム一覧", bookings_path %></li>
+                <li><%= link_to "登録済みルーム一覧", registers_path %></li>
+                <li><%= link_to "設定", edit_user_path(@user) %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </nav>
+          </li>
+        </div>
       <% else %>
+      <!-- 未ログイン状態の場合 -->
         <div class ="button">
           <%= link_to "ログイン", new_user_session_path, class: 'btn log_in_btn' %>
           <%= link_to "新規登録", new_user_registration_path, class: 'btn sign_in_btn' %>
@@ -45,3 +82,13 @@
     </footer>
   </body>
 </html>
+
+<script>
+  $(function(){
+    $('.list2').click(function () {
+      //list2をクリックしたら<条件/イベント>
+      $('.drop2').slideToggle(300);
+      //drop2をスライドしながら表示/非表示（3秒間で）
+    });
+  });
+</script>

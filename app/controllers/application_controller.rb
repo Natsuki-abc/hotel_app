@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
             users_path
         else
             flash[:notice] = "新規登録が完了しました"
-            users_path
+            edit_user_registration_path
         end
     end
 
