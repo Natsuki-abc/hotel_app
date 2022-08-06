@@ -10,7 +10,10 @@ class RegistersController < ApplicationController
   # GET /registers/1 or /registers/1.json
   def show
     @register = Register.find(params[:id])
+    @user = User.find(params[:id])
     @booking = Booking.new
+    binding.pry
+    
   end
 
   # GET /registers/new
@@ -25,15 +28,15 @@ class RegistersController < ApplicationController
   # POST /registers or /registers.json
   def create
     @register = Register.new(register_params)
+    binding.pry
+    @register.User_id = current_user.id
+    binding.pry
 
-    respond_to do |format|
-      if @register.save
-        format.html { redirect_to register_url(@register), notice: "Register was successfully created." }
-        format.json { render :show, status: :created, location: @register }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @register.errors, status: :unprocessable_entity }
-      end
+    if @register.save
+      flash[:notice] = "新規ルームを登録しました"
+      redirect_to register_path(@register)
+    else
+      render new_register_path
     end
   end
 
@@ -78,8 +81,8 @@ class RegistersController < ApplicationController
       @register = Register.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    #ストロングパラメーター設定
     def register_params
-      params.require(:register).permit(:room_name, :introduction, :price, :address, :room_image)
+      params.require(:register).permit(:room_name, :introduction, :price, :address, :room_image, :User_id)
     end
 end

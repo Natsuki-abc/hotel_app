@@ -122,34 +122,68 @@ h1{
     background-size: cover;
     width: 100%;
     height: 650px;
-}
-
-.search{
-    display: flex;
+    position: relative;
 }
 
 .search_index{
     background-color: white;
-    padding: 20px 10px;
-    border-radius: 2px;
+    padding: 25px;
+    border-radius: 5px;
+    width: 435px;
+
+    position: absolute;
+    top: 150px;
+    left: 125px;
+}
+
+.search_letter{
+    font-size: 25px;
 }
 
 .search_btn{
+    width: 100%;
+    border: solid 1px gray;
+}
+
+.search_btn2{
     background-color: #0000AA;
     color: white;
     border-radius: 5px;
     border-color: #0000AA;
-    width: 80%;
+    width: 100%;
+    margin: 20px 0 10px 0;
+    line-height: 2rem;
+}
+
+div.top_area{
+    width: 75%;
+    margin: 50px auto;
 }
 
 .popular_area{
     display: flex;
-    margin: 20px;
 }
 
-.Tokyo{
-    border-radius: 5px;
+div.area{
+    margin: 20px;
+    position: relative;
+}
+
+.image{
     height: 360px;
+    width: 186px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.letter{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 //トップ画面終わり
 
@@ -174,12 +208,7 @@ h1{
     text-decoration: none;
 }
 
-.active_account{
-    border-right: solid 3px #0000AA;
-    color: #0000AA !important;
-}
-
-.active_profile{
+.active{
     border-right: solid 3px #0000AA;
     color: #0000AA !important;
 }

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_q_for_register
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
     def set_q_for_register
         @q_header = Register.ransack(params[:q])
@@ -21,4 +22,7 @@ class ApplicationController < ActionController::Base
         users_path
     end
 
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    end
 end

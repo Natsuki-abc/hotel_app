@@ -1,5 +1,56 @@
-<h1>New Register</h1>
+<div class = "base_frame" >
+    <div class = "left_frame" >
+        <li class = "active" ><%= link_to "基本情報", new_register_path %></li>
+    </div>
 
-<%= render 'form', register: @register %>
+    <div class = "right_frame" >
+        <h1>ルーム情報登録</h1>
 
-<%= link_to 'Back', registers_path %>
+        <%= form_with model: @register do |form| %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+
+            <% if @register.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(@register.errors.count, "error") %> prohibited this register from being saved:</h2>
+                    <ul>
+                        <% @register.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="field">
+                <span class = "required" ><%= form.label :room_name, "ルーム名" %></span>
+                <%= form.text_field :room_name, placeholder: "ルーム名を入力" %>
+            </div>
+
+            <div class="field">
+                <span class = "required" ><%= form.label :introduction, "ルーム紹介" %></span>
+                <%= form.text_area :introduction, placeholder: "ルーム説明を入力" %>
+            </div>
+
+            <div class="field">
+                <span class = "required" ><%= form.label :price, "料金" %></span>
+                <%= form.number_field :price, placeholder: "1日あたりの料金を入力" %>
+            </div>
+
+            <div class="field">
+                <span class = "required" ><%= form.label :address, "住所" %></span>
+                <%= form.text_field :address, placeholder: "住所を入力" %>
+            </div>
+
+            <div class="field">
+                <span class = "required" ><%= form.label :room_image, "ルーム画像" %></span>
+                <%= form.file_field :room_image %>
+            </div>
+
+            <div class="actions">
+                <%= form.submit "登録" %>
+            </div>
+        <% end %>
+
+
+        <%= link_to 'Back', registers_path %>
+    </div>
+</div>

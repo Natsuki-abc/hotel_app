@@ -6,6 +6,8 @@ class BookingsController < ApplicationController
   def new
     @register = Register.find(params[:booking][:register_id])
     @booking = Booking.new
+    binding.pry
+    
   end
 
   def create
