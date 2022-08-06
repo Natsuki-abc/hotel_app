@@ -1,0 +1,26 @@
+<div class = "base_frame" >
+    <div class = "left_frame" >
+        <li class = "active_account" ><%= link_to "アカウント", user_path(current_user) %></li>
+        <li><%= link_to "プロフィール", edit_user_path(current_user) %></li>
+    </div>
+
+    <div class = "right_frame" >
+        <h2>アカウント</h2>
+
+        <table>
+            <tr>
+                <th>メールアドレス</th>
+                <td><%= @user.email %></td>
+            </tr>
+
+            <tr>
+                <th>パスワード</th>
+                <td>*********</td>
+            </tr>
+
+            <tr>
+                <th><%= link_to "編集", edit_user_registration_path, class: 'btn account_btn' %></th>
+            </tr>
+        </table>
+    </div>
+</div>

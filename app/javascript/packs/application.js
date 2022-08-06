@@ -24,4 +24,3 @@ ActiveStorage.start()
 //= require_tree .
 
 require('jquery')
-require('header/header_icon')

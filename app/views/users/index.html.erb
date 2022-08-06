@@ -1,3 +1,7 @@
+<% if flash.now[:notice] %>
+    <p class="notice"><%= flash.now[:notice] %></p>
+<% end %>
+
 <div class = "top_page" >
     <div class = "search">
         <div class = "search_index">
@@ -17,15 +21,19 @@
 
     <div class = "popular_area">
         <div class = "Tokyo">
+            <%= link_to image_tag( 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg', width: '282px', alt: "東京" ), search_registers_path(q:{address_cont:"東京"}) %>
         </div>
 
         <div class = "Osaka">
+            <%= link_to image_tag( 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg', width: '282px', alt: "東京" ), search_registers_path(q:{address_cont:"大阪"}) %>
         </div>
 
         <div class = "Kyoto">
+            <%= link_to image_tag( 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg', width: '282px', alt: "東京" ), search_registers_path(q:{address_cont:"京都"}) %>
         </div>
 
         <div class = "Sapporo">
+            <%= link_to image_tag( 'https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg', width: '282px', alt: "東京" ), search_registers_path(q:{address_cont:"札幌"}) %>
         </div>
     </div>
 </div>
