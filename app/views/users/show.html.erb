@@ -5,22 +5,18 @@
     </div>
 
     <div class = "right_frame" >
-        <h2>アカウント</h2>
+        <h2 class = "field" >アカウント</h2>
 
-        <table>
-            <tr>
-                <th>メールアドレス</th>
-                <td><%= @user.email %></td>
-            </tr>
+        <div class = "field" >
+            <div class = "title" >メールアドレス</div>
+            <div class = "title_in" ><%= @user.email %></div>
+        </div>
 
-            <tr>
-                <th>パスワード</th>
-                <td>*********</td>
-            </tr>
+        <div class = "field" >
+            <div class = "title" >パスワード</div>
+            <div class = "title_in" >*********</div>
+        </div>
 
-            <tr>
-                <th><%= link_to "編集", edit_user_registration_path, class: 'btn account_btn' %></th>
-            </tr>
-        </table>
+            <%= link_to "編集", edit_user_registration_path, class: 'btn account_btn' %>
     </div>
 </div>

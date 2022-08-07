@@ -8,8 +8,17 @@
 }
 
 .log_in_items {
-    padding: 20px 100px;
-    margin: 40px;
+    padding: 40px 100px;
+    margin: 40px 0;
     border: 1px solid #e3e2e2;
     justify-content: center;
+}
+
+.back_btn{
+    border: solid 1px #e3e2e2;
+    padding: 5px 0;
+    display: inline-block;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
 }

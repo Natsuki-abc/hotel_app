@@ -9,12 +9,10 @@
 
       <p><%= f.email_field :email, :placeholder => "メールアドレス", autofocus: true, autocomplete: "email" %></p>
 
-      <div class="field">
-        <% if @minimum_password_length %>
+      <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, :placeholder => "パスワード", autocomplete: "new-password" %>
-      </div>
+      <% end %><br />
+      <%= f.password_field :password, :placeholder => "パスワード", autocomplete: "new-password" %>
 
       <p><%= f.password_field :password_confirmation, :placeholder => "パスワード確認", autocomplete: "new-password" %></p>
 

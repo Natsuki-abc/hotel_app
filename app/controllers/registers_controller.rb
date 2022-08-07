@@ -11,9 +11,7 @@ class RegistersController < ApplicationController
   def show
     @register = Register.find(params[:id])
     @user = User.find(params[:id])
-    @booking = Booking.new
-    binding.pry
-    
+    @booking = Booking.new    
   end
 
   # GET /registers/new
@@ -28,9 +26,7 @@ class RegistersController < ApplicationController
   # POST /registers or /registers.json
   def create
     @register = Register.new(register_params)
-    binding.pry
-    @register.User_id = current_user.id
-    binding.pry
+    @register.user_id = current_user.id
 
     if @register.save
       flash[:notice] = "新規ルームを登録しました"
@@ -83,6 +79,6 @@ class RegistersController < ApplicationController
 
     #ストロングパラメーター設定
     def register_params
-      params.require(:register).permit(:room_name, :introduction, :price, :address, :room_image, :User_id)
+      params.require(:register).permit(:room_name, :introduction, :price, :address, :room_image, :user_id)
     end
 end
