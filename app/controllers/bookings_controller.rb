@@ -16,10 +16,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
+    @booking.register_id = @register.id
     binding.pry
 
     if @booking.save
-      flash[:notice] = "新規ルームを登録しました"
+      flash[:notice] = "新規予約を作成しました"
       redirect_to users_path
     end
   end

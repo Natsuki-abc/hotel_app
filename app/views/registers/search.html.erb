@@ -1,29 +1,21 @@
-<h1>検索結果：<%= @results.count %>件</h1>
+<div class = "" > 
+    <h1>検索結果：<%= @results.count %>件</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>ルーム画像</th>
-            <th>ルーム名</th>
-            <th>住所</th>
-            <th>ルーム紹介</th>
-            <th>料金</th>
-            <th>作成日</th>
-        </tr>
-    </thead>
-
-    <tbody>
+    <div class = "base_frame" >
         <% @results.each do |results| %>
-            <tr>
-                <td>
-                <%= image_tag results.room_image_url(:thumb ) if results.room_image.present? %>
-                </td>
-                <td><%= link_to results.room_name, results %></td>
-                <td><%= results.address %></td>
-                <td><%= results.introduction %></td>
-                <td><%= results.price %></td>
-                <td><%= results.created_at.to_s(:datetime_jp) %></td>
-            </tr>
+            <div class = "search_index_view" >
+                <%= link_to results.room_name do %>
+                    <div class = "search_room_img" >
+                        <%= image_tag results.room_image_url(:thumb ) if results.room_image.present? %>
+                    </div>
+
+                    <div class = "search_room" >
+                        <h2><%= results.room_name %></h2>
+                        <%= results.address %>
+                        ￥<%= results.price %>
+                    </div>
+                <% end %>
+            </div>
         <% end %>
-    </tbody>
-</table>
+    </div>
+</div>

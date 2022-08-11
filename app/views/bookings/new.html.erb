@@ -1,8 +1,11 @@
 <div class = "log_in" >
     <div class = "log_in_items">
-        <%= form_with model: @booking do |f| %>
+        <%= form_with model: @booking, controller: 'posts', action: 'create' do |f| %>
             <%= f.hidden_field :register_id, value: @register.id %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :start_date, value: @booking.start_date %>
+            <%= f.hidden_field :end_date, value: @booking.end_date %>
+            <%= f.hidden_field :person, value: @booking.person %>
+            <%= f.hidden_field :total_price, value: @booking.total_price %>
         
             <h2>予約内容確認</h2>
 

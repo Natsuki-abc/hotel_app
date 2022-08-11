@@ -10,8 +10,9 @@ class RegistersController < ApplicationController
   # GET /registers/1 or /registers/1.json
   def show
     @register = Register.find(params[:id])
-    @user = User.find(params[:id])
-    @booking = Booking.new    
+    @user = User.find(params[:user_id])
+    binding.pry
+    @booking = Booking.new
   end
 
   # GET /registers/new

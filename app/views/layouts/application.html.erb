@@ -48,7 +48,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                   <% if current_user.icon? %>
                   <!-- アイコン画像を登録している場合(アップローダーファイルで指定したサイズを表示) -->
-                    <%= image_tag current_user.icon.thumb.url %>
+                    <%= image_tag current_user.icon.thumb.url, :size => '65x65' %>
                   <% else %>
                   <!-- アイコン画像がデフォルト設定の場合 -->
                     <%= image_tag "/assets/default.png", :size => '65x65' %>

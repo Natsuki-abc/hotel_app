@@ -2,56 +2,55 @@
     <p class="notice"><%= flash.now[:notice] %></p>
 <% end %>
 
-<%= image_tag @register.room_image_url if @register.room_image.present? %>
+<div>
+  <div class = "room_show">
+    <div class = "container room_container" >
+      <% if @register.room_image.present? %>
+        <%= image_tag @register.room_image.thumb.url, class: "room_img" %>
+      <% else %>
+        <%= image_tag "/assets/room.jpg", class: "room_img" %>
+      <% end %>
 
-<%= image_tag @user.icon.thumb.url %>
+      <div class = "field_room" >
+        <div class = "room_usericon" >
+          <% if @user.icon.present? %>
+            <%= image_tag @user.icon.thumb.url, :size => '65x65' %>
+          <% else %>
+            <%= image_tag "/assets/default.png", :size => '65x65' %>
+          <% end %>
+        </div>
 
-<p>
-  <strong>Room name:</strong>
-  <%= @register.room_name %>
-</p>
+        <div class = "room_intro" >
+          <p class = "hotel_name" ><%= @register.room_name %></p>
+          <p>住所：<%= @register.address %></p>
+        </div>
+      </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @register.address %>
-</p>
+      <div class = "field_room" ><%= @register.introduction %></div>
+    </div>
 
-<p>
-  <strong>Introduction:</strong>
-  <%= @register.introduction %>
-</p>
+    <div class = "container booking_container" >
+      <p>¥ <%= @register.price %> / 日</p>
 
-<p>
-  <%= image_tag @register.room_image_url(:thumb ) if @register.room_image.present? %>
-</p>
+      <%= form_with model: @booking, method: :get, url: new_booking_path(@booking) do |f| %>
+        <%= f.hidden_field :register_id, value: @register.id %>
 
-<div class = "right_frame" >
-  <p>¥ <%= @register.price %> / 日</p>
+        <%= f.label :start_date ,"開始日" %>
+        <p><%= f.date_field :start_date, class: "room_search" %></p>
 
-  <%= form_with model: @booking, method: :get, url: new_booking_path(@booking) do |f| %>
-    <%= f.hidden_field :register_id, value: @register.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.label :end_date ,"終了日" %>
+        <p><%= f.date_field :end_date, class: "room_search" %></p>
 
-    <p>
-      <%= f.label :start_date ,"開始日" %>
-      <%= f.date_field :start_date %>
-    </p>
+        <%= f.label :person ,"人数" %>
+        <p><%= f.number_field :person, class: "room_search" %></p>
 
-    <p>
-      <%= f.label :end_date ,"終了日" %>
-      <%= f.date_field :end_date %>
-    </p>
-
-    <p>
-      <%= f.label :person ,"人数" %>
-      <%= f.number_field :person %>
-    </p>
-  
-
-    <% if user_signed_in? %>
-      <%= f.submit "予約する", class: "" %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path, class: 'btn log_in_btn' %>
-    <% end %>
-  <% end %>
+        <% if user_signed_in? %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit "予約する", class: "search_btn2" %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: 'btn log_in_btn' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
