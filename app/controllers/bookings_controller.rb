@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
-    @booking.register_id = @register.id
     binding.pry
 
     if @booking.save

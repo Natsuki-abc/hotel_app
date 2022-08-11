@@ -4,7 +4,8 @@
     <div class = "base_frame" >
         <% @results.each do |results| %>
             <div class = "search_index_view" >
-                <%= link_to results.room_name do %>
+                <%= link_to results do %>
+                    <%= results.room_name %>
                     <div class = "search_room_img" >
                         <%= image_tag results.room_image_url(:thumb ) if results.room_image.present? %>
                     </div>
