@@ -6,14 +6,11 @@ class ApplicationController < ActionController::Base
         @q_header = Register.ransack(params[:q])
     end
 
-    #ログイン/新規登録後の画面
+    #ログイン後の画面
     def after_sign_in_path_for(resource)
         if current_user
             flash[:notice] = "ログインに成功しました"
             users_path
-        else
-            flash[:notice] = "新規登録が完了しました"
-            edit_user_path(current_user)
         end
     end
 
@@ -22,7 +19,13 @@ class ApplicationController < ActionController::Base
         users_path
     end
 
+    private
+
+    #userのストロングパラメーター
     def configure_permitted_parameters
+        #新規登録時
         devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+        #情報更新時
+        devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     end
 end

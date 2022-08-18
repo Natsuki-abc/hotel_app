@@ -4,7 +4,7 @@ class RegistersController < ApplicationController
 
   # GET /registers or /registers.json
   def index
-    @registers = Register.all
+    @registers = current_user.registers.all
   end
 
   # GET /registers/1 or /registers/1.json
@@ -32,6 +32,7 @@ class RegistersController < ApplicationController
       flash[:notice] = "新規ルームを登録しました"
       redirect_to register_path(@register)
     else
+      flash.now[:notice] = "新規ルームの登録に失敗しました"
       render new_register_path
     end
   end

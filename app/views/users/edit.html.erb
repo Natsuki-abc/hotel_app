@@ -2,10 +2,12 @@
     <p class="notice"><%= flash.now[:notice] %></p>
 <% end %>
 
+<%= render "shared/error", obj: @user %> 
+
 <div class = "base_frame" >
     <div class = "left_frame" >
-            <li ><%= link_to "アカウント", user_path(current_user) %></li>
-            <li class = "active" ><%= link_to "プロフィール", edit_user_path(current_user) %></li>
+            <li ><%= link_to "アカウント", user_path(@user) %></li>
+            <li class = "active" ><%= link_to "プロフィール", edit_user_path(@user) %></li>
     </div>
 
     <div class = "right_frame" >
@@ -13,7 +15,7 @@
 
         <%= form_with model:@user do |f| %>
             <div class="icon_img">
-                <%= image_tag current_user.icon.thumb.url %>
+                <%= image_tag @user.icon.thumb.url %>
             </div>
 
             <div class="field">

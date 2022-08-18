@@ -10,8 +10,9 @@ class Booking < ApplicationRecord
     validate :start_end_check
 
     def date_before_start
-        return if start_date.blank?
-        errors.add(:start_date, "は今日以降のものを選択してください") if start_date < Date.today
+        if start_date < Date.today
+            errors.add(:start_date, "は今日以降のものを選択してください")
+        end
     end
 
     def start_end_check

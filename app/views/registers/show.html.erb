@@ -30,27 +30,40 @@
     </div>
 
     <div class = "container booking_container" >
-      <p>¥ <%= @register.price %> / 日</p>
-
-      <%= form_with model: @booking, method: :get, url: new_booking_path(@booking) do |f| %>
-        <%= f.hidden_field :register_id, value: @register.id %>
-
-        <%= f.label :start_date ,"開始日" %>
-        <p><%= f.date_field :start_date, class: "room_search" %></p>
-
-        <%= f.label :end_date ,"終了日" %>
-        <p><%= f.date_field :end_date, class: "room_search" %></p>
-
-        <%= f.label :person ,"人数" %>
-        <p><%= f.number_field :person, class: "room_search" %></p>
-
-        <% if user_signed_in? %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.submit "予約する", class: "search_btn2" %>
-        <% else %>
-          <%= link_to "ログイン", new_user_session_path, class: 'btn log_in_btn' %>
+      <div class = "booking_container2" >
+        <% if @booking.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this register from being saved:</h2>
+            <ul>
+                <% @booking.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+          </div>
         <% end %>
-      <% end %>
+
+        <p>¥ <%= @register.price %> / 日</p>
+
+        <%= form_with model: @booking, method: :get, url: new_booking_path(@booking) do |f| %>
+          <%= f.hidden_field :register_id, value: @register.id %>
+
+          <%= f.label :start_date ,"開始日" %>
+          <p><%= f.date_field :start_date, class: "room_search" %></p>
+
+          <%= f.label :end_date ,"終了日" %>
+          <p><%= f.date_field :end_date, class: "room_search" %></p>
+
+          <%= f.label :person ,"人数" %>
+          <p><%= f.number_field :person, class: "room_search" %></p>
+
+          <% if user_signed_in? %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit "予約する", class: "search_btn2" %>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: 'btn log_in_btn' %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

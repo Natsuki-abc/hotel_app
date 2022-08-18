@@ -11,7 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
-  #   super
+  # super
+  # @user = User.new(user_params)
   # end
 
   # GET /resource/edit
@@ -38,7 +39,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  #アカウント情報更新後のダイレクト先
+  def after_update_path_for(resource)
+    users_path
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +65,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile, :icon )
+  end
 end

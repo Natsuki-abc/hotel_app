@@ -1,3 +1,9 @@
+<% if flash.now[:notice] %>
+    <p class="notice"><%= flash.now[:notice] %></p>
+<% end %>
+
+<%= render "shared/error", obj: @register %> 
+
 <div class = "base_frame" >
     <div class = "left_frame" >
         <li class = "active" ><%= link_to "基本情報", new_register_path %></li>
@@ -8,17 +14,6 @@
 
         <%= form_with model: @register do |form| %>
             <%= form.hidden_field :user_id, value: current_user.id %>
-
-            <% if @register.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(@register.errors.count, "error") %> prohibited this register from being saved:</h2>
-                    <ul>
-                        <% @register.errors.each do |error| %>
-                            <li><%= error.full_message %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
 
             <div class="field">
                 <div class = "title" >

@@ -1,29 +1,31 @@
-<h1>予約済みルーム一覧</h1>
+<div class = "registers_index" >
+    <h1>予約済みルーム一覧</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>ルーム画像</th>
-            <th>ルーム名</th>
-            <th>住所</th>
-            <th>ルーム紹介</th>
-            <th>料金</th>
-            <th>作成日</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @registers.each do |register| %>
+    <table>
+        <thead>
             <tr>
-                <td>
-                    <%= image_tag register.room_image_url(:thumb ) if register.room_image.present? %>
-                </td>
-                <td><%= link_to register.room_name, register %></td>
-                <td><%= register.address %></td>
-                <td><%= register.introduction %></td>
-                <td><%= register.price %></td>
-                <td><%= register.created_at.to_s(:datetime_jp) %></td>
+                <th>ルーム画像</th>
+                <th>ルーム名</th>
+                <th>ルーム紹介</th>
+                <th>合計料金</th>
+                <th>開始日</th>
+                <th>終了日</th>
+                <th>予約確定日時</th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+            <% @bookings.each do |booking| %>
+                <tr>
+                    <td><%= image_tag booking.register.room_image_url(:thumb ) if booking.register.room_image.present? %></td>
+                    <td><%= booking.register.room_name %></td>
+                    <td><%= booking.register.introduction %></td>
+                    <td><%= booking.total_price %></td>
+                    <td><%= booking.start_date %></td>
+                    <td><%= booking.end_date %></td>
+                    <td><%= booking.created_at.to_s(:datetime_jp) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

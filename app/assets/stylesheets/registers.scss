@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.registers_index{
+    margin: 50px;
+}
+
 //ルーム詳細ページ
 .room_show{
     display: flex;
@@ -31,14 +35,20 @@
 .container{
     margin: 50px auto;
     padding: 20px;
-
 }
 
 .room_container{
+    margin-right: 30px !important;
 }
 
 .booking_container{
+    width: 40% !important;
+    margin: 50px 30px;
+}
+
+.booking_container2{
     border: solid 1px #e3e2e2;
+    padding: 20px;
 }
 
 .room_search{
@@ -51,8 +61,35 @@
 }
 
 //ルーム検索結果ページ
+.search{
+    margin: 25px 30px;
+}
+
+.search_base{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .search_index_view{
     border: solid 1px #dbd9d9;
     border-radius: 2px;
     margin: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.search_room{
+    padding: 15px;
+    color: black;
+    font-weight: 600;
+}
+
+.search_room_name{
+    font-weight: 700;
+    color: rgb(159, 159, 159);
+}
+
+.search_price{
+    text-align: right;
+    font-size: 18px;
 }
