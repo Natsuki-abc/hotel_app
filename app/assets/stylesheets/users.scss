@@ -1,0 +1,67 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.log_in {
+    display: flex;
+    justify-content: center;
+}
+
+.log_in_items {
+    padding: 40px 100px;
+    margin: 40px 0;
+    border: 1px solid #e3e2e2;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.log_in_h2{
+    text-align: center;
+    font-size: 30px;
+}
+
+.log_in_p{
+    font-size: 16px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.log_in_p_pw{
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.back_btn{
+    border: solid 1px #e3e2e2;
+    padding: 5px 0;
+    display: inline-block;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+//アカウント新規登録画面
+.sign_up_h2{
+    text-align: center;
+}
+
+.required2::before {
+    content: "必須";
+    color: #ffffff;
+    background: #e94646;
+    font-size: 0.8em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    margin-left:0.3em;
+}
+
+.required2{
+    padding: 5px;
+}
+
+.sign_up_field{
+    width: 85%;
+    border: solid 1px #dbd9d9;
+    border-radius: 2px;
+}

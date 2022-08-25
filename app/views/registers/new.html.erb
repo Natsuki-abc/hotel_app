@@ -1,0 +1,58 @@
+<% if flash.now[:notice] %>
+    <p class="notice"><%= flash.now[:notice] %></p>
+<% end %>
+
+<%= render "shared/error", obj: @register %> 
+
+<div class = "base_frame" >
+    <div class = "left_frame" >
+        <li class = "active" ><%= link_to "基本情報", new_register_path %></li>
+    </div>
+
+    <div class = "right_frame" >
+        <h2 class = "field" >ルーム情報登録</h2>
+
+        <%= form_with model: @register do |form| %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= form.label :room_name, "ルーム名" %></span>
+                </div>
+                <div class = "title_in" ><%= form.text_field :room_name, placeholder: "ルーム名を入力", class: "search_btn" %></div>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= form.label :introduction, "ルーム紹介" %></span>
+                </div>
+                <div class = "title_in" ><%= form.text_area :introduction, placeholder: "ルーム説明を入力", class: "search_btn introduction_btn" %></div>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= form.label :price, "料金" %></span>
+                </div>
+                <div class = "title_in" ><%= form.number_field :price, placeholder: "1日あたりの料金を入力", class: "search_btn" %></div>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= form.label :address, "住所" %></span>
+                </div>
+                <div class = "title_in" ><%= form.text_field :address, placeholder: "住所を入力", class: "search_btn" %></div>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= form.label :room_image, "ルーム画像" %></span>
+                </div>
+                <div class = "title_in" ><%= form.file_field :room_image %></div>
+            </div>
+
+            <div class="actions">
+                <%= form.submit "登録", class: "search_btn2 actions_btn" %>
+            </div>
+        <% end %>
+    </div>
+</div>

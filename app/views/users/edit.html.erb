@@ -1,0 +1,47 @@
+<% if flash.now[:notice] %>
+    <p class="notice"><%= flash.now[:notice] %></p>
+<% end %>
+
+<%= render "shared/error", obj: @user %> 
+
+<div class = "base_frame" >
+    <div class = "left_frame" >
+            <li ><%= link_to "アカウント", user_path(@user) %></li>
+            <li class = "active" ><%= link_to "プロフィール", edit_user_path(@user) %></li>
+    </div>
+
+    <div class = "right_frame" >
+        <h2 class = "field" >プロフィール</h2>
+
+        <%= form_with model:@user do |f| %>
+            <div class="icon_img">
+                <%= image_tag @user.icon.thumb.url %>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= f.label :icon, "アイコン画像" %></span>
+                </div>
+                <div class = "title_in" ><%= f.file_field :icon %></div>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= f.label :name, "名前" %></span>
+                </div>
+                <div class = "title_in" ><%= f.text_field :name, autofocus: true, autocomplete: "name", class: "search_btn" %></div>
+            </div>
+
+            <div class="field">
+                <div class = "title" >
+                    <span class = "required" ><%= f.label :profile, "自己紹介" %></span>
+                </div>
+                <div class = "title_in" ><%= f.text_area :profile, autofocus: true, placeholder: "自己紹介を入力", class: "search_btn introduction_btn" %></div>
+            </div>
+
+            <div class="actions">
+                <%= f.submit "更新", class: "search_btn2 actions_btn" %>
+            </div>
+        <% end %>
+    </div>
+</div>

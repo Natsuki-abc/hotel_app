@@ -1,0 +1,27 @@
+<% if flash.now[:notice] %>
+    <p class="notice"><%= flash.now[:notice] %></p>
+<% end %>
+
+<div class = "log_in" >
+    <div class = "log_in_items" >
+        <div class = "field" >
+            <div class = "title" >予約した部屋</div>
+            <div class = "title_in" ><%= @register.room_name %></div>
+        </div>
+
+        <div class = "field" >
+            <div class = "title" >開始日</div>
+            <div class = "title_in" ><%= @booking.start_date %></div>
+        </div>
+
+        <div class = "field" >
+            <div class = "title" >終了日</div>
+            <div class = "title_in" ><%= @booking.end_date %></div>
+        </div>
+
+        <div class = "field" >
+            <div class = "title" >価格</div>
+            <div class = "title_in" ><%= @booking.total_price %></div>
+        </div>
+    </div>
+</div>
